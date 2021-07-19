@@ -8,7 +8,7 @@ node {
 
     stage('Build image') {
         // This builds the actual image; synonymous to docker build on the command line
-        app = docker.build("library/hellopython:${env.BUILD_ID}")
+        app = docker.build("rbenavente/hellopython:${env.BUILD_ID}")
     }
 
     stage('Scan Image and Publish to Jenkins') {
@@ -23,7 +23,7 @@ node {
         withCredentials([usernamePassword(credentialsId: 'twistlock_creds', passwordVariable: 'TL_PASS', usernameVariable: 'TL_USER')]) {
             sh 'curl -k -u $TL_USER:$TL_PASS --output ./twistcli https://$TL_CONSOLE/api/v1/util/twistcli'
             sh 'sudo chmod a+x ./twistcli'
-            sh "./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE  --details library/hellopython:${env.BUILD_ID}"
+            sh "./twistcli images scan --u $TL_USER --p $TL_PASS --address https://$TL_CONSOLE  --details rbenavente/hellopython:${env.BUILD_ID}"
         }
     }
 
