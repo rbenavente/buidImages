@@ -39,7 +39,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
       //  docker.withRegistry('https://harbor-master-testenv.rbenavente.demo.twistlock.com', 'harbor_credentials') {
-        docker.withRegistry( ,'dockerhub_credentials') {
+        docker.withRegistry(  '', 'dockerhub_credentials') {
             app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
