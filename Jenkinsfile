@@ -12,8 +12,9 @@ node {
     }
     stage('Build NewImage') {
         // This builds the actual image; synonymous to docker build on the command line
-     //    sh 'cd NewImage'
-   //      sh 'cat Dockerfile'
+          sh 'cd NewImage'
+          sh 'pwd'
+          sh 'cat Dockerfile'
         app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "NewImage/Dockerfile")
     }
 
