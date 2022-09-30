@@ -1,4 +1,4 @@
-FROM rbenavente/basepython
+FROM rbenavente/basepython:latest
 
 USER root
 
