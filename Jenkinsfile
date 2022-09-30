@@ -8,7 +8,7 @@ node {
 
     stage('Build Base image') {
         // This builds the actual image; synonymous to docker build on the command line
-        base = docker.build("rbenavente/basepython:${env.BUILD_ID}")
+        base = docker.build("rbenavente/basepython:${env.BUILD_ID}", "-f /Dockerfile")
     }
     stage('Build NewImage') {
         // This builds the actual image; synonymous to docker build on the command line
@@ -16,7 +16,7 @@ node {
           sh 'ls -la'
        
           sh 'cat DockerfileDev'
-        app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "DockerfileDev")
+        app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "-f /DockerfileDev")
     }
 
     stage('Scan NewImage and Publish to Jenkins') {
