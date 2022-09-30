@@ -1,4 +1,4 @@
-FROM rbenavente/hellopython
+FROM rbenavente/basepython
 
 USER root
 
