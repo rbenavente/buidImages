@@ -1,6 +1,6 @@
 node {
+    def base
     def app
-
     stage('Clone repository') {
         // Let's make sure we have the repository cloned to our workspace
         checkout scm
@@ -8,13 +8,13 @@ node {
 
     stage('Build Base image') {
         // This builds the actual image; synonymous to docker build on the command line
-        app = docker.build("rbenavente/basepython:${env.BUILD_ID}")
+        base = docker.build("rbenavente/basepython:${env.BUILD_ID}")
     }
     stage('Build NewImage') {
         // This builds the actual image; synonymous to docker build on the command line
          sh 'cd NewImage'
          sh 'cat Dockerfile'
-        app = docker.build("rbenavente/pythondev:${env.BUILD_ID}")
+        app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "NewImage/Dockerfile")
     }
 
     stage('Scan NewImage and Publish to Jenkins') {
