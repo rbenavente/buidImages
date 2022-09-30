@@ -8,7 +8,7 @@ node {
 
     stage('Build Base image') {
         // This builds the actual image; synonymous to docker build on the command line
-        base = docker.build("rbenavente/basepython:${env.BUILD_ID}", "./Dockerfile")
+        base = docker.build("rbenavente/basepython:${env.BUILD_ID}", "./")
     }
     stage('Build NewImage') {
         // This builds the actual image; synonymous to docker build on the command line
