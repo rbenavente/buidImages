@@ -14,9 +14,8 @@ node {
         // This builds the actual image; synonymous to docker build on the command line
           sh 'pwd'
           sh 'ls -la'
-          sh 'cd NewImage'
-          sh 'pwd'
-          sh 'cat Dockerfile'
+       
+          sh 'cat DockerfileDev'
         app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "DockerfileDev")
     }
 
