@@ -17,7 +17,7 @@ node {
           sh 'cd NewImage'
           sh 'pwd'
           sh 'cat Dockerfile'
-        app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "NewImage/Dockerfile")
+        app = docker.build("rbenavente/pythondev:${env.BUILD_ID}", "DockerfileDev")
     }
 
     stage('Scan NewImage and Publish to Jenkins') {
