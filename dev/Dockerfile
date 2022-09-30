@@ -1,4 +1,4 @@
-FROM rbenavente/basepython:${env.BUILD_ID}
+FROM rbenavente/basepython:20
 
 USER root
 
